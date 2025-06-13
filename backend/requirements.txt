@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+pydantic
+python-dotenv
+alembic
+python-multipart
+pydantic-settings
+fastapi-cors
+# Added for VRP and Maps integration
+ortools
+googlemaps
+geopy
+requests
+cachetools
