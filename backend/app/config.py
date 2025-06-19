@@ -5,11 +5,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://postgres:admin@localhost:5432/log_db")
-    POSTGRES_USER: str = os.getenv("POSTGRES_USER", "postgres")
-    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD", "admin")
-    POSTGRES_DB: str = os.getenv("POSTGRES_DB", "log_db")
-    POSTGRES_HOST: str = os.getenv("POSTGRES_HOST", "localhost")
+    # Azure PostgreSQL connection string format
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://postgres@scm_app_user:S3cur3Tr%40ckP%40ss@disc-post-db.postgres.database.azure.com:5432/scm_tracker_db?sslmode=require")
+    POSTGRES_USER: str = os.getenv("POSTGRES_USER", "scm_app_user")
+    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD", "S3cur3Tr@ckP@ss")
+    POSTGRES_DB: str = os.getenv("POSTGRES_DB", "scm_tracker_db")
+    POSTGRES_HOST: str = os.getenv("POSTGRES_HOST", "disc-post-db.postgres.database.azure.com")
     POSTGRES_PORT: int = int(os.getenv("POSTGRES_PORT", "5432"))
     
     # Google Maps API settings

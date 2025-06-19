@@ -42,8 +42,14 @@ export function GoogleMap({
   useEffect(() => {
     const initMap = async () => {
       try {
-        const apiKey = 'AIzaSyAvzZE-wEwLs6QRBr17LsbpKRfGBWrgQMc'; // Hardcoded for demo purposes
-        
+        const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
+        if (!apiKey) {
+          console.error('Google Maps API key not found in environment variables');
+          setError('Missing Google Maps API key. Please check your environment configuration.');
+          return;
+        }
+      
         const loader = new Loader({
           apiKey,
           version: 'weekly',
@@ -124,9 +130,9 @@ export function GoogleMap({
       
       if (sameRoutes && directionsRenderers.length > 0) {
         // No need to redisplay if showing the same routes
-        return;
-      }
-      
+      return;
+    }
+    
       // Store the new route IDs
       routeIdsRef.current = routesToDisplay.map(r => r.id);
       
@@ -186,8 +192,8 @@ export function GoogleMap({
             waypoints,
             optimizeWaypoints: false,
             travelMode: google.maps.TravelMode.DRIVING
-          };
-          
+        };
+        
           // Use promise to handle route request
           const result = await new Promise<google.maps.DirectionsResult>((resolve, reject) => {
             directionsService.route(request, (result, status) => {
@@ -197,8 +203,8 @@ export function GoogleMap({
                 reject(new Error(`Directions request failed: ${status}`));
               }
             });
-          });
-          
+    });
+    
           directionsRenderer.setDirections(result);
           newRenderers.push(directionsRenderer);
           
@@ -214,15 +220,15 @@ export function GoogleMap({
                 if (leg.distance) totalDistance += leg.distance.value;
                 if (leg.duration) totalDuration += leg.duration.value;
               });
-            }
-            
+    }
+
             // Convert to km and hours/minutes
             const distanceInKm = Math.round(totalDistance / 100) / 10; // Convert meters to km
             const hours = Math.floor(totalDuration / 3600);
             const minutes = Math.floor((totalDuration % 3600) / 60);
-            
-            const formattedDuration = hours > 0 
-              ? `${hours}h ${minutes}m` 
+
+            const formattedDuration = hours > 0
+              ? `${hours}h ${minutes}m`
               : `${minutes}m`;
               
             const formattedDistance = `${distanceInKm} km`;

@@ -50,9 +50,6 @@ export function AddDriverDialog({ open, onOpenChange, onSuccess }: AddDriverDial
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
             Add Driver
-            <Button variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
-              <X className="h-4 w-4" />
-            </Button>
           </DialogTitle>
         </DialogHeader>
 

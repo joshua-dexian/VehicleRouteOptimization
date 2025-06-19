@@ -141,8 +141,11 @@ export function RouteMap() {
     }
     
     try {
-      const apiKey = 'AIzaSyAvzZE-wEwLs6QRBr17LsbpKRfGBWrgQMc'; // Use the same key as in GoogleMap component
-      
+      const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
+      if (!apiKey) {
+        throw new Error('Google Maps API key not found in environment variables');
+      }
       return new Promise<void>((resolve, reject) => {
         // If script already exists but service isn't available, wait for it
         if (window.google && window.google.maps) {

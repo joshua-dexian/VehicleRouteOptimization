@@ -113,9 +113,6 @@ export function AddOrderDialog({ open, onOpenChange, onOrderAdded }: AddOrderDia
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
             Add an order
-            <Button variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
-              <X className="h-4 w-4" />
-            </Button>
           </DialogTitle>
         </DialogHeader>
 

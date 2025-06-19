@@ -139,9 +139,6 @@ export function DepotManagementDialog({ open, onOpenChange, onDepotAdded }: Depo
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
             Manage Depots
-            <Button variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
-              <X className="h-4 w-4" />
-            </Button>
           </DialogTitle>
         </DialogHeader>
 

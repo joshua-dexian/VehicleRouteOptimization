@@ -49,9 +49,6 @@ export function AddVehicleDialog({ open, onOpenChange, onSuccess }: AddVehicleDi
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
             Add Vehicle
-            <Button variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
-              <X className="h-4 w-4" />
-            </Button>
           </DialogTitle>
         </DialogHeader>
 
